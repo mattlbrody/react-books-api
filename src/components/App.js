@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
+import axios from 'axios';
+import SearchBar from './SearchBar';
 
-class App extends Component {
+export default class App extends Component {
+	state = { books: [] }
+
+	onSearchSubmit = async (term) => {
+		const books = await axios.get('https://www.googleapis.com/books/v1/volumes?q=' + term)
+		
+		this.setState({ books })
+	}
+
 	render() {
+		console.log(this.state.books)
 		return (
-			<div>test</div>
+			<SearchBar onSubmit={this.onSearchSubmit} />
 		);
 	}
 }
+
