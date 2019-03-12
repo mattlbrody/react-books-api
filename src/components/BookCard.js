@@ -5,7 +5,7 @@ const BookCard = (props) => {
 	return (
 		<div className="ui card">
 		  <div className="image">
-		    <img src={props.image} alt="" />
+		    <img src={props.image} alt={props.title} />
 		  </div>
 		  <div className="content">
 		    <h2 className="header">{props.title}</h2>
@@ -17,7 +17,12 @@ const BookCard = (props) => {
 		    </div>
 		  </div>
 		  <div className="extra content">
-		    <button className="ui primary button">Buy Me!</button>
+		  	<a href={props.previewLink} target="_blank" rel="noopener noreferrer">
+		    	<button className="ui secondary button">Preview</button>
+		    </a>
+		    <a href={props.buyLink} target="_blank" rel="noopener noreferrer">
+		    	<button className="ui primary button">Buy Me!</button>
+		    </a>
 		  </div>
 		</div>
 	);
