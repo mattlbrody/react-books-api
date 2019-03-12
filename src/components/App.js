@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar';
+import BookList from './BookList';
 
 export default class App extends Component {
 	state = { books: [] }
@@ -12,10 +13,20 @@ export default class App extends Component {
 	}
 
 	render() {
-		console.log(this.state.books)
-		return (
-			<SearchBar onSubmit={this.onSearchSubmit} />
-		);
+		if (this.state.books.length === 0) {
+			return (
+				<div className="ui container">
+					<SearchBar onSubmit={this.onSearchSubmit} />
+				</div>
+			);
+		} else {
+			return (
+				<div className="ui container">
+					<SearchBar onSubmit={this.onSearchSubmit} />
+					<BookList books={this.state.books} />
+				</div>
+			);
+		}
 	}
 }
 
