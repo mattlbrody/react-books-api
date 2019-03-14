@@ -7,9 +7,8 @@ const BookList = (props) => {
 	//map over all of the book items to create a new card for each one in the list
 	const books = props.books.data.items.map((book) => { 
 		return (
-			<div className="col col-lg-4 grid-wrapper">
+			<div className="col col-lg-4 grid-wrapper" key={book.id}>
 				<BookCard 
-					key={book.id}
 					image={book.volumeInfo.imageLinks.thumbnail}
 					title={book.volumeInfo.title} 
 					author={book.volumeInfo.authors[0]} 
